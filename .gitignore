@@ -1,2 +1,8 @@
 __pycache__*
 wingbox/__pycache__*
+.vscode*
+
+logic/logic_calcs.ilk
+logic/logic_calcs.obj
+logic/logic_calcs.pdb
+logic/vc140.pdb

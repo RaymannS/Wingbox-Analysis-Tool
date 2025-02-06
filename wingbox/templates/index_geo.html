@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<p>Welcome to Geometry!</p>
+
+<form onsubmit="return false;">
+    <input type="number" id="numberInput" oninput="updateValue()" value="">
+</form>
+
+<p>You entered: <span id="displayValue"></span></p>
+
+<script>
+    async function updateValue() {
+        let input = document.getElementById("numberInput").value;
+
+        // Send the input to Flask and wait for response
+        let response = await fetch('/calculate', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ number: input })
+        });
+
+        let data = await response.json();  // Get response from Flask
+        document.getElementById("displayValue").textContent = data.result || "Error";  // Update display
+    }
+    document.getElementById("numberInput").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    });
+</script>
+
+{% endblock %}
