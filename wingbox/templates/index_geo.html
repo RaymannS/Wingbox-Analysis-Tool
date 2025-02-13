@@ -4,19 +4,22 @@
 <p>Welcome to Geometry!</p>
 
 <form onsubmit="return false;">
-    <input type="number" id="numberInput" oninput="updateValue()" value="3">
-    <input type="number" id="numberInput" oninput="updateValue()" value="4">
+    <input type="number" id="geoInput" oninput="updateValue()" value="3">
+    <input type="number" id="geoInput" oninput="updateValue()" value="4">
+    <input type="number" id="loadInput" oninput="updateValue()" value="4">
 </form>
 
 <p>You entered: <span id="displayValue"></span></p>
 
 <script>
     async function updateValue() {
-        let inputs = document.querySelectorAll('input[id="numberInput"]');
+        let inputs = document.querySelectorAll('input[id="geoInput"]');
+        let data = await fetchCalculationData(inputs);
+        document.getElementById("displayValue").textContent = data.result.join(", ");
+    }
+
+    async function fetchCalculationData(inputs) {
         let numbers = Array.from(inputs).map(input => input.value);
-
-        if (numbers.length === 0) return; // Prevent sending empty requests
-
 
         // Send the input to Flask and wait for response
         let response = await fetch('/calculate', {
@@ -26,10 +29,11 @@
         });
 
         let data = await response.json();  // Get response from Flask
-        console.log(data)
-        document.getElementById("displayValue").textContent = data.result.join(", ");
+        return data;
     }
-    document.getElementById("numberInput").addEventListener("keypress", function(event) {
+
+    // Listener
+    document.getElementById("numberInput").addEventListener("keypress", function(event) { // Don't allow enter
         if (event.key === "Enter") {
             event.preventDefault();
         }

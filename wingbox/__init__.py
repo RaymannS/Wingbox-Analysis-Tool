@@ -26,7 +26,6 @@ def calculate():
     try:
         data = request.json  # Get JSON data from frontend
         numbers = data.get("numbers", [])  # Extract number
-        #print(data)
 
         # Run the C++ script and pass the number
         result = subprocess.run(
