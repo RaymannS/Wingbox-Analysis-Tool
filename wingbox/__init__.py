@@ -25,18 +25,18 @@ def loads():
 def calculate():
     try:
         data = request.json  # Get JSON data from frontend
-        number = data.get("number")  # Extract number
+        numbers = data.get("numbers", [])  # Extract number
+        #print(data)
 
         # Run the C++ script and pass the number
         result = subprocess.run(
             ["./logic/logic_calcs.exe"],  # Run compiled C++ script
-            input=str(number),  # Send number as input
+            input=" ".join(map(str, numbers)),  # Send number as input
             text=True,
             capture_output=True
         )
-
         # Get the output (modified number)
-        modified_value = result.stdout.strip()
+        modified_value = result.stdout.strip().split()
 
         return jsonify({"result": modified_value})  # Send back to frontend
 
