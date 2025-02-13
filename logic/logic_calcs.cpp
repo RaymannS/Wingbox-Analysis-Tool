@@ -1,17 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <sstream>
+#include <iomanip>
 
 int main() {
-    std::vector<int> numbers;
-    int num;
+    std::vector<double> numbers;
+    double num;
 
     while (std::cin >> num) {
         numbers.push_back(num);
     }
 
-    for (int n : numbers) {
-        std::cout << n * 2 << std::endl;
+    for (double n : numbers) {
+        std::cout << std::setprecision(15) << n * 2 << std::endl;
     }
 
     return 0;
