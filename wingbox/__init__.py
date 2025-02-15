@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, jsonify
-from logic.logic import meow, bark
+from logic.simple_logic import meow, bark
 import subprocess
 
 # http://127.0.0.1:5000
