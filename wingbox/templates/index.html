@@ -1,5 +1,8 @@
 <!doctype html>
 <html>
+    <head>
+        <script src="{{ url_for('static', filename='/listener.js') }}" defer></script>
+    </head>
 <body>
     <p><a href="{{ url_for('geometry') }}">Meow!</a></p>
     <p><a href="{{ url_for('loads') }}">Bark!</a></p>
