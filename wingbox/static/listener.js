@@ -1,6 +1,6 @@
 async function updateValue() {
     // Get Inputs from HTML Fields
-    let combinedInputs = document.querySelectorAll('input[id="geoInput"], input[id="loadsInput"]');
+    let combinedInputs = document.querySelectorAll('input[id^="geoInput"], input[id^="loadsInput"]');
     let data = await manageInputs(combinedInputs);
     
     // Display Values
