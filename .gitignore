@@ -1,7 +1,7 @@
 __pycache__*
 wingbox/__pycache__*
 .vscode*
-
+.venv*
 logic/logic_calcs.ilk
 logic/logic_calcs.obj
 logic/logic_calcs.pdb
