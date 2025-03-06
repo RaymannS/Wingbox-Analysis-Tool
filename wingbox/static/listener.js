@@ -2,6 +2,9 @@ async function updateValue() {
     // Get Inputs from HTML Fields
     let combinedInputs = document.querySelectorAll('input[id^="geoInput"], input[id^="loadsInput"]');
     let data = await manageInputs(combinedInputs);
+
+    // Render 3D Plots
+    render3DPlot(data);
     
     // Display Values
     document.getElementById("displayValueGeo").textContent = data.geoArray.join(", ");
@@ -62,6 +65,68 @@ function positionInputs() { // Function to Move Input Boxes
     loads.style.position = "absolute";
     loads.style.top = "200px";
     loads.style.left = "10px";
+}
+
+/* ------------------------------------------------------ */
+/* ------------------   PLOTTING   ---------------------- */
+
+async function render3DPlot(data) {
+    const x = [data.geo.height];  // X-axis 
+    const y = [data.geo.depth];  // Y-axis
+    const z = [data.loads];  // Z-axis
+    console.log("Data received for plot:", data); //////
+
+    const trace = {
+        x: x,
+        y: y,
+        z: z,
+        mode: 'markers',
+        marker: {
+            size: 5,
+            color: 'rgba(217, 217, 217, 0.14)',
+            line: {
+                color: 'rgba(217, 217, 217, 0.14)',
+                width: 0.5
+            },
+            opacity: 0.8
+        },
+        type: 'scatter3d'
+    };
+
+    const layout = {
+        title: '3D Plot of Wingbox',
+        scene: {
+            xaxis: { 
+                title: 'X Axis', 
+                showbackground: true, 
+                showline: true,   // Enables border lines
+                showgrid: true,   // Shows grid
+                zeroline: false,
+                linecolor: 'black', // Border color
+                linewidth: 3       // Border thickness
+            },
+            yaxis: { 
+                title: 'Y Axis', 
+                showbackground: true, 
+                showline: true, 
+                showgrid: true, 
+                zeroline: false,
+                linecolor: 'black', 
+                linewidth: 3
+            },
+            zaxis: { 
+                title: 'Z Axis', 
+                showbackground: true, 
+                showline: true, 
+                showgrid: true, 
+                zeroline: false,
+                linecolor: 'black', 
+                linewidth: 3
+            }
+        }
+    };
+
+    Plotly.newPlot('my3DPlot', [trace], layout);
 }
 
 

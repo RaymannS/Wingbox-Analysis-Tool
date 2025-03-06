@@ -10,3 +10,11 @@ input[type="number"] {
     position: absolute;  /* Place it at a specific position */
     bottom: 50px;  /* Adjust as needed */
 }
+
+.plot-container {
+    position: absolute;
+    top: 250px;
+    border: 3px solid black;  /* Creates a black border */
+    padding: 10px;            /* Adds spacing between plot and border */
+    display: inline-block;     /* Adjusts size to fit content */
+}
