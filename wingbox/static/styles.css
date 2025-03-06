@@ -1,0 +1,12 @@
+/* Make input boxes smaller */
+input[type="number"] {
+    width: 60px;  /* Adjust size */
+    padding: 5px; /* Reduce padding for compact design */
+    font-size: 14px; /* Adjust font size */
+}
+
+/* Display outputs below Inputs */
+#outputContainer {
+    position: absolute;  /* Place it at a specific position */
+    bottom: 50px;  /* Adjust as needed */
+}

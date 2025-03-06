@@ -46,9 +46,29 @@ async function fetchCalculationData(numbers) {
     return data;
 }
 
+function positionInputs() { // Function to Move Input Boxes
+    let depth = document.getElementById("geoInputDepth");
+    let height = document.getElementById("geoInputHeight");
+    let loads = document.getElementById("loadsInput");
+
+    depth.style.position = "absolute";
+    depth.style.top = "120px";
+    depth.style.left = "10px";
+
+    height.style.position = "absolute";
+    height.style.top = "160px";
+    height.style.left = "10px";
+
+    loads.style.position = "absolute";
+    loads.style.top = "200px";
+    loads.style.left = "10px";
+}
+
+
 /* ------------------------------------------------------ */
 
 // Main Constructor
 (async function main() {
+    positionInputs();
     await updateValue();
 })();
