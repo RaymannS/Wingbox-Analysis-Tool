@@ -11,10 +11,21 @@ input[type="number"] {
     bottom: 50px;  /* Adjust as needed */
 }
 
-.plot-container {
-    position: absolute;
-    top: 250px;
-    border: 3px solid black;  /* Creates a black border */
-    padding: 10px;            /* Adds spacing between plot and border */
-    display: inline-block;     /* Adjusts size to fit content */
+#plotContainer {
+    position: absolute;  /* Absolute positioning to place it precisely */
+    top: 10%;            /* Start at 10% from the top */
+    left: 50%;           /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    
+    width: 50vw;         /* Set width to 50% of the viewport width */
+    height: 40vh;        /* Set height dynamically (end at 50% - start at 10%) */
+    
+    border: 3px solid black;  /* Keeps the border */
+    display: flex;           /* Ensures child div takes full space */
+    align-items: center;     
+    justify-content: center;
+}
+#my3DPlot {
+    width: 100% !important;
+    height: 100% !important;
 }

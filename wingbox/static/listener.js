@@ -70,7 +70,7 @@ function positionInputs() { // Function to Move Input Boxes
 /* ------------------------------------------------------ */
 /* ------------------   PLOTTING   ---------------------- */
 
-async function render3DPlot(data) {
+async function render3DPlot(data) { // Need to make plot look better
     const x = [data.geo.height];  // X-axis 
     const y = [data.geo.depth];  // Y-axis
     const z = [data.loads];  // Z-axis
@@ -123,10 +123,13 @@ async function render3DPlot(data) {
                 linecolor: 'black', 
                 linewidth: 3
             }
-        }
+        },
+        autosize: true,  // Allow auto-sizing
+        margin: { l: 0, r: 0, b: 0, t: 50 }, // Minimize extra margins
+        responsive: true  // Ensure it resizes properly
     };
 
-    Plotly.newPlot('my3DPlot', [trace], layout);
+    Plotly.newPlot('my3DPlot', [trace], layout, { responsive: true });
 }
 
 
