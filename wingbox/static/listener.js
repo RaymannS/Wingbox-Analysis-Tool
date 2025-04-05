@@ -71,10 +71,15 @@ function positionInputs() { // Function to Move Input Boxes
 /* ------------------   PLOTTING   ---------------------- */
 
 async function render3DPlot(data) { // Need to make plot look better
+    // Need to eventually get rid of axes and lines and ##
+    // need to add xyz limits to make sizing good
+    // need to make main color gray-black like Matlab new desktop plots
+        // blue lines for the wingbox
     const x = [data.geo.height];  // X-axis 
     const y = [data.geo.depth];  // Y-axis
     const z = [data.loads];  // Z-axis
-    console.log("Data received for plot:", data); //////
+
+    console.log("Data received for plot:", data); // Can get rid of this in the future
 
     const trace = {
         x: x,
